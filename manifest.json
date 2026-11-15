@@ -1,25 +1,28 @@
 {
   "manifest_version": 3,
   "name": "Vakao - 视频速度控制器",
-  "version": "1.0",
-  "description": "在任何网站上使用Z/X/C键或预设按钮控制视频播放速度。",
+  "version": "1.1",
+  "description": "在所有网页用 Z / X / C 与数字键调整视频倍速，并自动记住每个站点上次的倍速。",
   "icons": {
-    "16": "/img/icon16.png",
-    "32": "/img/icon32.png",
-    "48": "/img/icon48.png",
-    "128": "/img/icon128.png"
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   },
+  "permissions": ["storage", "scripting"],
+  "host_permissions": ["<all_urls>"],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["js/content.js"]
+      "js": ["content/content.js"],
+      "all_frames": true,
+      "match_about_blank": true,
+      "run_at": "document_idle"
     }
   ],
   "action": {
-    "default_popup": "/popup.html",
+    "default_popup": "popup/popup.html",
     "default_title": "视频速度控制器",
-    "default_icon": "/img/icon16.png"
-  },
-  "permissions": ["scripting"],
-  "host_permissions": ["<all_urls>"]
+    "default_icon": "icons/icon16.png"
+  }
 }

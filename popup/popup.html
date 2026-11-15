@@ -4,17 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>视频倍速控制</title>
-    <link rel="stylesheet" href="./css/popup.css" />
+    <link rel="stylesheet" href="./popup.css" />
   </head>
   <body>
     <div class="header">
       <div class="header-left">
         <div class="header-icon">
-          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
         </div>
         <h1>视频倍速</h1>
       </div>
-      <div id="speed-display" class="current-speed-display">检测中...</div>
+      <div id="speed" class="current-speed-display">检测中...</div>
     </div>
 
     <div class="grid-container">
@@ -46,12 +46,16 @@
         <span class="shortcut-item"><span class="key">X</span> 重置</span>
         <span class="shortcut-item"><span class="key">C</span> 加速</span>
       </div>
-      <div class="shortcut-hint">
-        <span class="key">0</span>-<span class="key">9</span>
-        <span>输入数字直接设置倍速</span>
-      </div>
+
+      <label class="toggle-row">
+        <span class="toggle-label">
+          <span>数字键直接设速</span>
+          <span class="toggle-hint">关闭后改为 Alt + 数字，把 0-9 还给站点</span>
+        </span>
+        <input type="checkbox" id="digits" />
+      </label>
     </div>
 
-    <script src="/js/popup.js"></script>
+    <script src="./popup.js"></script>
   </body>
 </html>

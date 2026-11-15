@@ -78,6 +78,12 @@ h1 {
   white-space: nowrap;
 }
 
+/* 没视频 / 页面不可用时降级为中性色，避免和「已生效」的绿色混淆 */
+.current-speed-display.muted {
+  color: var(--text-secondary);
+  background: rgba(108, 117, 125, 0.1);
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -169,10 +175,67 @@ button.active:hover {
   box-shadow: 0 1px 0 var(--border-color);
 }
 
-.shortcut-hint {
-  margin-top: 6px;
-  color: var(--text-secondary);
+/* 页面不可用（chrome://、应用商店等）时整块按钮置灰 */
+body.disabled button {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.toggle-row {
   display: flex;
   align-items: center;
-  gap: 4px;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-base);
+  cursor: pointer;
+}
+
+.toggle-label {
+  display: block;
+  line-height: 1.4;
+}
+
+.toggle-hint {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.toggle-row input[type="checkbox"] {
+  appearance: none;
+  flex: none;
+  position: relative;
+  width: 34px;
+  height: 20px;
+  border-radius: 20px;
+  background: #d5d9dd;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-row input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.toggle-row input[type="checkbox"]:checked {
+  background: var(--primary);
+}
+
+.toggle-row input[type="checkbox"]:checked::after {
+  transform: translateX(14px);
 }
